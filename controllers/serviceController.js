@@ -34,11 +34,11 @@ exports.createService = catchAsyncErrors(async (req, res, next) => {
 
   res.status(201).json({
     success: true,
-    product,
+    service,
   });
 });
 
-// Get All Product
+// Get All Services
 exports.getAllServices = catchAsyncErrors(async (req, res, next) => {
   const resultPerPage = 8;
   const servicesCount = await Service.countDocuments();
@@ -70,7 +70,7 @@ exports.getAdminServices = catchAsyncErrors(async (req, res, next) => {
 
   res.status(200).json({
     success: true,
-    products: services,
+    services: services,
   });
 });
 
