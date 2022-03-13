@@ -40,27 +40,29 @@ exports.createService = catchAsyncErrors(async (req, res, next) => {
 
 // Get All Services
 exports.getAllServices = catchAsyncErrors(async (req, res, next) => {
-  const resultPerPage = 8;
-  const servicesCount = await Service.countDocuments();
+  // const resultPerPage = 8;
+  // const servicesCount = await Service.countDocuments();
 
-  const apiFeature = new ApiFeatures(Service.find(), req.query)
-    .search()
-    .filter();
+  // const apiFeature = new ApiFeatures(Service.find(), req.query)
+  //   .search()
+  //   .filter();
 
-  let services = await apiFeature.query;
+  // let services = await apiFeature.query;
 
-  let filteredServicesCount = services.length;
+  // let filteredServicesCount = services.length;
 
-  apiFeature.pagination(resultPerPage);
+  // apiFeature.pagination(resultPerPage);
 
-  services = await apiFeature.query;
+  // services = await apiFeature.query;
 
+  // console.log(res.json(services));
+  const services = await Service.find();
   res.status(200).json({
     success: true,
     services,
-    servicesCount,
-    resultPerPage,
-    filteredServicesCount: filteredServicesCount,
+    // servicesCount,
+    // resultPerPage,
+    // filteredServicesCount: filteredServicesCount,
   });
 });
 
